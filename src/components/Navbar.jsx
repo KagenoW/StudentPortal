@@ -1,22 +1,30 @@
 // Navbar.jsx
 
 import { Link, useLocation } from "react-router-dom";
+import {
+  House,
+  LockKeyhole,
+  GraduationCap,
+  KeyRound,
+  Zap,
+  Clock3,
+  UserRound,
+} from "lucide-react";
 
 function Navbar() {
   const location = useLocation();
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "Activity 1", path: "/activity1" },
-    { name: "Activity 2", path: "/activity2" },
-    { name: "Activity 3", path: "/activity3" },
-    { name: "Activity 4", path: "/activity4" },
-    { name: "Activity 5", path: "/activity5" },
+    { name: "Home", path: "/", icon: House },
+    { name: "Activity 1", path: "/activity1", icon: LockKeyhole },
+    { name: "Activity 2", path: "/activity2", icon: GraduationCap },
+    { name: "Activity 3", path: "/activity3", icon: KeyRound },
+    { name: "Activity 4", path: "/activity4", icon: Zap },
+    { name: "Activity 5", path: "/activity5", icon: Clock3 },
   ];
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-[#f4f7fc]/95 px-3 py-3 backdrop-blur-md md:px-6">
-
       <div className="flex min-h-[72px] w-full items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 shadow-md md:px-8">
 
         {/* LOGO */}
@@ -24,14 +32,11 @@ function Navbar() {
           to="/"
           className="flex shrink-0 items-center gap-3"
         >
-
-          {/* NU BLUE LOGO */}
           <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#003b7a] text-sm font-extrabold text-white shadow-md">
             RA
           </div>
 
           <div className="hidden leading-tight sm:block">
-
             <h1 className="text-lg font-extrabold tracking-tight text-[#003b7a]">
               React<span className="text-[#f5c400]">Activity</span>
             </h1>
@@ -39,24 +44,21 @@ function Navbar() {
             <p className="text-[10px] font-medium text-slate-400">
               Student Portal
             </p>
-
           </div>
-
         </Link>
 
         {/* NAVIGATION */}
         <div className="hidden flex-1 items-center justify-center gap-1 px-6 lg:flex">
-
           {navItems.map((item) => {
-
             const isActive = location.pathname === item.path;
+            const Icon = item.icon;
 
             return (
               <Link
                 key={item.path}
                 to={item.path}
                 className={`
-                  rounded-full px-5 py-3 text-sm font-semibold
+                  flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold
                   transition-all duration-200
                   ${
                     isActive
@@ -65,24 +67,23 @@ function Navbar() {
                   }
                 `}
               >
-                {item.name}
+                <Icon size={17} strokeWidth={2.2} />
+                <span>{item.name}</span>
               </Link>
             );
-
           })}
-
         </div>
 
         {/* PROFILE BUTTON */}
         <Link
           to="/"
-          className="shrink-0 rounded-full bg-[#003b7a] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#002b5c] hover:shadow-md"
+          className="flex shrink-0 items-center gap-2 rounded-full bg-[#003b7a] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#002b5c] hover:shadow-md"
         >
-          👤 <span className="hidden sm:inline">Student</span>
+          <UserRound size={17} strokeWidth={2.2} />
+          <span className="hidden sm:inline">Student</span>
         </Link>
 
       </div>
-
     </nav>
   );
 }
