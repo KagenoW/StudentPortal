@@ -1,6 +1,17 @@
+// App.jsx
+
 import "./App.css";
 
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
+
+import StudentCollab from "./assets/StudentCollab.png";
+import StudentCampus from "./assets/StudentCampus.png";
+import Studcamp from "./assets/Studcamp.png";
+import Hacker from "./assets/Hacker.png";
+import Moa from "./assets/Moa.png";
 
 import Activity1 from "./pages/Activity1";
 import Activity2 from "./pages/Activity2";
@@ -8,12 +19,61 @@ import Activity3 from "./pages/Activity3";
 import Activity4 from "./pages/Activity4";
 import Activity5 from "./pages/Activity5";
 
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
 function Home() {
+  const carouselImages = [
+    {
+      src: Moa,
+      alt: "Students",
+    },
+    {
+      src: Studcamp,
+      alt: "Students collaborating",
+    },
+    {
+      src: StudentCampus,
+      alt: "Students on campus",
+    },
+    {
+      src: StudentCollab,
+      alt: "Students working together",
+    },
+    {
+      src: Hacker,
+      alt: "Student programming",
+    },
+  ];
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((previousImage) => {
+        return (previousImage + 1) % carouselImages.length;
+      });
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [carouselImages.length]);
+
+  const previousImage = () => {
+    setCurrentImage((current) => {
+      return (
+        (current - 1 + carouselImages.length) %
+        carouselImages.length
+      );
+    });
+  };
+
+  const nextImage = () => {
+    setCurrentImage((current) => {
+      return (current + 1) % carouselImages.length;
+    });
+  };
+
   const activities = [
     {
       number: 1,
+      icon: "🔐",
       title: "Login Authentication",
       description:
         "Validate a username and password against sample credentials and manage login/logout state.",
@@ -21,6 +81,7 @@ function Home() {
     },
     {
       number: 2,
+      icon: "🎓",
       title: "Student Grade Evaluation",
       description:
         "Enter a student's score and get an automatic remark based on grade ranges.",
@@ -28,6 +89,7 @@ function Home() {
     },
     {
       number: 3,
+      icon: "🔑",
       title: "Password Strength Checker",
       description:
         "Check password length and receive live feedback on how strong it is.",
@@ -35,6 +97,7 @@ function Home() {
     },
     {
       number: 4,
+      icon: "⚡",
       title: "Electricity Bill Calculator",
       description:
         "Calculate a customer's electricity bill based on kWh consumption and tiered rates.",
@@ -42,6 +105,7 @@ function Home() {
     },
     {
       number: 5,
+      icon: "🕐",
       title: "Employee Attendance Checker",
       description:
         "Check an employee's time-in and determine whether they are on time, late, or very late.",
@@ -50,97 +114,335 @@ function Home() {
   ];
 
   return (
-    <main className="min-h-[calc(100vh-80px)] bg-slate-100 px-6 py-16 md:px-10 md:py-16">
+    <main className="min-h-screen w-full bg-[#f4f7fc]">
+      <div className="w-full overflow-hidden bg-white shadow-xl">
 
-      {/* ================= HEADER ================= */}
-      <div className="mx-auto max-w-6xl text-center">
+        {/* HERO */}
+        <section className="relative mx-3 mt-3 overflow-hidden rounded-[28px] md:mx-5 lg:mx-7">
 
-        <h1 className="text-5xl font-extrabold tracking-tight text-[#000080] md:text-6xl">
-          React Activity Portal
-        </h1>
+          <img
+            src={StudentCampus}
+            alt="Students"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
 
-        <p className="mx-auto mt-5 max-w-4xl text-base leading-7 text-slate-500 md:text-lg">
-          Five interactive React activities demonstrating state, events,
-          conditional logic, validation, and calculations.
-        </p>
+          {/* NU BLUE OVERLAY */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#001f5b]/85 via-[#003b7a]/70 to-[#0057a8]/55" />
 
-      </div>
+          <div className="relative flex min-h-[520px] items-center px-8 py-20 md:px-16 lg:px-24 xl:px-32">
 
-      {/* ================= ACTIVITY CARDS ================= */}
-      <div
-        className="
-          mx-auto mt-14 grid max-w-6xl
-          grid-cols-1 gap-7
-          md:grid-cols-2
-          lg:grid-cols-3
-        "
-      >
+            <div className="max-w-4xl text-white">
 
-        {activities.map((activity) => (
-          <div
-            key={activity.number}
-            className="
-              flex min-h-[270px] flex-col
-              rounded-2xl
-              border border-slate-200
-              bg-white
-              p-7
-              shadow-sm
-              transition-all duration-300
-              hover:-translate-y-1
-              hover:shadow-lg
-            "
-          >
+              {/* NU STYLE BADGE */}
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#f5c400] px-5 py-2.5 text-sm font-bold text-[#001f5b] shadow-lg">
+                🎓 Student Portal
+              </div>
 
-            {/* ================= NUMBER ================= */}
-            <div
-              className="
-                flex h-11 w-11
-                items-center justify-center
-                rounded-lg
-                bg-blue-50
-                text-base font-bold
-                text-[#000080]
-              "
-            >
-              {activity.number}
+              <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl xl:text-8xl">
+                Learn.
+                <br />
+                Practice.
+                <br />
+                Build Your Skills.
+              </h1>
+
+              <p className="mt-7 max-w-2xl text-base leading-7 text-white/90 md:text-lg">
+                Welcome to your React Activity Student Portal. Access your
+                programming activities, practice your skills, and explore
+                interactive exercises in one convenient place.
+              </p>
+
+              <a
+                href="#activities"
+                className="mt-9 inline-flex rounded-full bg-[#f5c400] px-8 py-4 text-sm font-extrabold text-[#001f5b] shadow-lg transition hover:-translate-y-1 hover:bg-[#ffd52e] hover:shadow-xl"
+              >
+                Explore Activities →
+              </a>
+
+            </div>
+          </div>
+        </section>
+
+        {/* SEARCH */}
+        <div className="relative z-10 mx-4 -mt-8 md:mx-10 lg:mx-16 xl:mx-24">
+
+          <div className="flex w-full flex-col gap-3 rounded-full border border-slate-200 bg-white p-2 shadow-xl md:flex-row md:items-center">
+
+            <div className="flex min-w-0 flex-1 items-center gap-3 rounded-full bg-[#f4f7fc] px-6 py-4">
+
+              <span className="text-lg text-[#003b7a]">
+                🔎
+              </span>
+
+              <input
+                type="text"
+                placeholder="Search activities..."
+                className="w-full bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
+              />
+
             </div>
 
-            {/* ================= TITLE ================= */}
-            <h2 className="mt-6 text-xl font-bold text-slate-900">
-              {activity.title}
-            </h2>
+            <div className="hidden items-center gap-2 px-5 text-sm text-slate-500 lg:flex">
+              <span>📚</span>
+              <span>5 Activities</span>
+            </div>
 
-            {/* ================= DESCRIPTION ================= */}
-            <p className="mt-3 text-sm leading-6 text-slate-500 md:text-base">
-              {activity.description}
-            </p>
-
-            {/* ================= BUTTON ================= */}
-            <Link
-              to={activity.path}
-              className="
-                mt-auto block
-                rounded-lg
-                bg-[#000080]
-                px-5 py-3.5
-                text-center
-                text-sm font-semibold
-                text-white
-                transition-all duration-200
-                hover:bg-[#000066]
-                hover:shadow-md
-                active:scale-[0.98]
-              "
+            <a
+              href="#activities"
+              className="rounded-full bg-[#003b7a] px-8 py-4 text-center text-sm font-bold text-white transition hover:bg-[#002b5c]"
             >
-              Open Activity
-            </Link>
+              View Activities
+            </a>
 
           </div>
-        ))}
+        </div>
+
+        {/* WELCOME + CAROUSEL */}
+        <section className="grid w-full grid-cols-1 items-center gap-12 px-6 py-20 md:px-10 lg:grid-cols-2 lg:px-16 xl:px-24 2xl:px-32">
+
+          {/* CAROUSEL */}
+          <div className="group relative">
+
+            <div className="relative h-[320px] overflow-hidden rounded-[28px] shadow-lg md:h-[420px] lg:h-[480px]">
+
+              {carouselImages.map((image, index) => (
+                <img
+                  key={image.src}
+                  src={image.src}
+                  alt={image.alt}
+                  className={`
+                    absolute inset-0 h-full w-full object-cover
+                    transition-opacity duration-1000 ease-in-out
+                    ${
+                      currentImage === index
+                        ? "opacity-100"
+                        : "opacity-0"
+                    }
+                  `}
+                />
+              ))}
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#001f5b]/50 via-transparent to-transparent" />
+
+              {/* PREVIOUS BUTTON */}
+              <button
+                type="button"
+                onClick={previousImage}
+                aria-label="Previous image"
+                className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl font-bold text-[#003b7a] opacity-0 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white group-hover:opacity-100"
+              >
+                ←
+              </button>
+
+              {/* NEXT BUTTON */}
+              <button
+                type="button"
+                onClick={nextImage}
+                aria-label="Next image"
+                className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl font-bold text-[#003b7a] opacity-0 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white group-hover:opacity-100"
+              >
+                →
+              </button>
+
+              {/* DOTS */}
+              <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 gap-2">
+
+                {carouselImages.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => setCurrentImage(index)}
+                    aria-label={`Go to image ${index + 1}`}
+                    className={`
+                      h-2.5 rounded-full transition-all duration-300
+                      ${
+                        currentImage === index
+                          ? "w-8 bg-[#f5c400]"
+                          : "w-2.5 bg-white/70 hover:bg-white"
+                      }
+                    `}
+                  />
+                ))}
+
+              </div>
+
+            </div>
+
+            {/* FLOATING LABEL */}
+            <div className="absolute -bottom-5 left-5 rounded-full border-4 border-white bg-[#003b7a] px-6 py-3 text-sm font-bold text-white shadow-lg">
+              🎓 Student Life
+            </div>
+
+          </div>
+
+          {/* TEXT */}
+          <div className="max-w-3xl">
+
+            <p className="text-sm font-extrabold uppercase tracking-widest text-[#003b7a]">
+              Student Dashboard
+            </p>
+
+            <h2 className="mt-3 text-4xl font-extrabold leading-tight text-[#001f5b] md:text-5xl xl:text-6xl">
+              Welcome to Your
+              <br />
+              Activity Portal
+            </h2>
+
+            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-500 md:text-lg">
+              Improve your programming skills through a collection of
+              interactive activities. Each activity focuses on a different
+              programming concept and provides a practical way to apply what
+              you have learned.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+
+              <a
+                href="#activities"
+                className="rounded-full bg-[#003b7a] px-7 py-3.5 text-sm font-bold text-white transition hover:bg-[#002b5c]"
+              >
+                View Activities
+              </a>
+
+              <Link
+                to="/activity1"
+                className="rounded-full border border-[#d9e2f0] bg-white px-7 py-3.5 text-sm font-bold text-[#003b7a] transition hover:border-[#003b7a] hover:bg-[#f4f7fc]"
+              >
+                Start Activity 1
+              </Link>
+
+            </div>
+
+          </div>
+        </section>
+
+        {/* ACTIVITIES */}
+        <section
+          id="activities"
+          className="w-full bg-[#f4f7fc] px-6 py-20 md:px-10 lg:px-16 xl:px-20"
+        >
+
+          <div className="text-center">
+
+            <p className="text-sm font-extrabold uppercase tracking-widest text-[#003b7a]">
+              Quick Access
+            </p>
+
+            <h2 className="mt-2 text-4xl font-extrabold text-[#001f5b] md:text-5xl">
+              Explore Your Activities
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-500">
+              Choose an activity below to start practicing and demonstrate
+              your programming skills.
+            </p>
+
+          </div>
+
+          <div className="mt-12 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+
+            {activities.map((activity) => (
+              <Link
+                key={activity.number}
+                to={activity.path}
+                className="group flex min-h-[290px] flex-col rounded-[24px] border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#003b7a]/30 hover:shadow-xl"
+              >
+
+                <div className="flex items-center justify-between">
+
+                  {/* NUMBER */}
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#e7eef8] text-sm font-extrabold text-[#003b7a]">
+                    {activity.number}
+                  </div>
+
+                  {/* ICON */}
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f8f3d8] text-2xl transition group-hover:scale-110">
+                    {activity.icon}
+                  </div>
+
+                </div>
+
+                <h3 className="mt-7 text-xl font-extrabold leading-tight text-[#001f5b]">
+                  {activity.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-6 text-slate-500">
+                  {activity.description}
+                </p>
+
+                <div className="mt-auto pt-7">
+
+                  <div className="flex items-center justify-between rounded-full bg-[#003b7a] px-5 py-3.5 text-sm font-bold text-white transition group-hover:bg-[#002b5c]">
+
+                    <span>Open Activity</span>
+
+                    <span className="transition-transform group-hover:translate-x-1">
+                      →
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </Link>
+            ))}
+
+          </div>
+
+          <div className="mt-10 flex justify-center gap-2">
+            <span className="h-2 w-8 rounded-full bg-[#003b7a]" />
+            <span className="h-2 w-2 rounded-full bg-[#c8d5e6]" />
+            <span className="h-2 w-2 rounded-full bg-[#c8d5e6]" />
+          </div>
+
+        </section>
+
+        {/* STATS */}
+        <section className="w-full px-6 py-16 md:px-10 lg:px-16 xl:px-20">
+
+          <div className="grid grid-cols-2 gap-5 lg:grid-cols-4">
+
+            <div className="rounded-2xl bg-[#f4f7fc] p-7 text-center transition hover:-translate-y-1 hover:shadow-md">
+              <p className="text-4xl font-extrabold text-[#003b7a]">
+                5
+              </p>
+              <p className="mt-2 text-sm text-slate-500">
+                Activities
+              </p>
+            </div>
+
+            <div className="rounded-2xl bg-[#f4f7fc] p-7 text-center transition hover:-translate-y-1 hover:shadow-md">
+              <p className="text-4xl font-extrabold text-[#003b7a]">
+                5
+              </p>
+              <p className="mt-2 text-sm text-slate-500">
+                React Pages
+              </p>
+            </div>
+
+            <div className="rounded-2xl bg-[#f4f7fc] p-7 text-center transition hover:-translate-y-1 hover:shadow-md">
+              <p className="text-4xl font-extrabold text-[#003b7a]">
+                100%
+              </p>
+              <p className="mt-2 text-sm text-slate-500">
+                Interactive
+              </p>
+            </div>
+
+            <div className="rounded-2xl bg-[#f4f7fc] p-7 text-center transition hover:-translate-y-1 hover:shadow-md">
+              <p className="text-4xl font-extrabold text-[#003b7a]">
+                ⚛
+              </p>
+              <p className="mt-2 text-sm text-slate-500">
+                React Powered
+              </p>
+            </div>
+
+          </div>
+
+        </section>
 
       </div>
-
     </main>
   );
 }
@@ -148,22 +450,51 @@ function Home() {
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
 
-        {/* Navigation stays visible on every page */}
+      <div className="min-h-screen w-full bg-[#f4f7fc]">
+
         <Navbar />
 
-        {/* Pages */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/activity1" element={<Activity1 />} />
-          <Route path="/activity2" element={<Activity2 />} />
-          <Route path="/activity3" element={<Activity3 />} />
-          <Route path="/activity4" element={<Activity4 />} />
-          <Route path="/activity5" element={<Activity5 />} />
-        </Routes>
+        <main className="w-full">
+
+          <Routes>
+
+            <Route
+              path="/"
+              element={<Home />}
+            />
+
+            <Route
+              path="/activity1"
+              element={<Activity1 />}
+            />
+
+            <Route
+              path="/activity2"
+              element={<Activity2 />}
+            />
+
+            <Route
+              path="/activity3"
+              element={<Activity3 />}
+            />
+
+            <Route
+              path="/activity4"
+              element={<Activity4 />}
+            />
+
+            <Route
+              path="/activity5"
+              element={<Activity5 />}
+            />
+
+          </Routes>
+
+        </main>
 
       </div>
+
     </BrowserRouter>
   );
 }
