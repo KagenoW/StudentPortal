@@ -32,13 +32,15 @@ function Navbar() {
           to="/"
           className="flex shrink-0 items-center gap-3"
         >
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#003b7a] text-sm font-extrabold text-white shadow-md">
-            RA
-          </div>
+          <img
+            src="/StudentPortalLogo.png"
+            alt="StudentPortal Logo"
+            className="h-12 w-12 object-contain"
+          />
 
           <div className="hidden leading-tight sm:block">
             <h1 className="text-lg font-extrabold tracking-tight text-[#003b7a]">
-              React<span className="text-[#f5c400]">Activity</span>
+              Student<span className="text-[#f5c400]">Portal</span>
             </h1>
 
             <p className="text-[10px] font-medium text-slate-400">
