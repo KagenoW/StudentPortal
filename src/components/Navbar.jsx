@@ -1,3 +1,5 @@
+// Navbar.jsx
+
 import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
@@ -13,50 +15,40 @@ function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-slate-800 bg-[#0b1120]">
-      <div className="mx-auto flex h-20 max-w-[1500px] items-center justify-between px-8 lg:px-12">
+    <nav className="sticky top-0 z-50 w-full bg-[#f4f7fc]/95 px-3 py-3 backdrop-blur-md md:px-6">
 
-        {/* ================= LOGO ================= */}
+      <div className="flex min-h-[72px] w-full items-center justify-between rounded-2xl border border-slate-200 bg-white px-4 shadow-md md:px-8">
+
+        {/* LOGO */}
         <Link
           to="/"
-          className="group flex items-center gap-4"
+          className="flex shrink-0 items-center gap-3"
         >
-          {/* Logo Icon */}
-          <div
-            className="flex h-12 w-12 items-center justify-center
-                       rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600
-                       text-base font-bold text-white
-                       shadow-lg shadow-blue-500/20
-                       transition-all duration-300
-                       group-hover:scale-105
-                       group-hover:shadow-blue-500/40"
-          >
+
+          {/* NU BLUE LOGO */}
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#003b7a] text-sm font-extrabold text-white shadow-md">
             RA
           </div>
 
-          {/* Logo Text */}
-          <div className="leading-tight">
-            <h1
-              className="text-lg font-bold tracking-wide
-                         text-white transition-colors
-                         group-hover:text-blue-400"
-            >
-              React Activity
+          <div className="hidden leading-tight sm:block">
+
+            <h1 className="text-lg font-extrabold tracking-tight text-[#003b7a]">
+              React<span className="text-[#f5c400]">Activity</span>
             </h1>
 
-            <p className="mt-1 text-xs font-medium text-slate-400">
+            <p className="text-[10px] font-medium text-slate-400">
               Student Portal
             </p>
+
           </div>
+
         </Link>
 
-        {/* ================= NAVIGATION ================= */}
-        <div
-          className="flex items-center rounded-xl
-                     border border-slate-700/70
-                     bg-slate-900/70 p-1.5"
-        >
+        {/* NAVIGATION */}
+        <div className="hidden flex-1 items-center justify-center gap-1 px-6 lg:flex">
+
           {navItems.map((item) => {
+
             const isActive = location.pathname === item.path;
 
             return (
@@ -64,31 +56,33 @@ function Navbar() {
                 key={item.path}
                 to={item.path}
                 className={`
-                  relative rounded-lg px-5 py-3
-                  text-sm font-semibold
+                  rounded-full px-5 py-3 text-sm font-semibold
                   transition-all duration-200
                   ${
                     isActive
-                      ? "bg-blue-600 text-white shadow-md shadow-blue-600/30"
-                      : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                      ? "bg-[#e7eef8] text-[#003b7a] shadow-sm"
+                      : "text-slate-600 hover:bg-[#f4f7fc] hover:text-[#003b7a]"
                   }
                 `}
               >
                 {item.name}
-                {/* Active Indicator */}
-                {isActive && (
-                  <span
-                    className="absolute -bottom-1 left-1/2
-                               h-0.5 w-6
-                               -translate-x-1/2
-                               rounded-full bg-blue-400"
-                  />
-                )}
               </Link>
             );
+
           })}
+
         </div>
+
+        {/* PROFILE BUTTON */}
+        <Link
+          to="/"
+          className="shrink-0 rounded-full bg-[#003b7a] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#002b5c] hover:shadow-md"
+        >
+          👤 <span className="hidden sm:inline">Student</span>
+        </Link>
+
       </div>
+
     </nav>
   );
 }
