@@ -5,6 +5,20 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
+import {
+  Search,
+  BookOpen,
+  ArrowRight,
+  ArrowLeft,
+  ArrowUpRight,
+  GraduationCap,
+  LockKeyhole,
+  KeyRound,
+  Zap,
+  Clock3,
+  Atom,
+} from "lucide-react";
+
 import Navbar from "./components/Navbar";
 
 import StudentCollab from "./assets/StudentCollab.png";
@@ -50,7 +64,7 @@ function Home() {
       setCurrentImage((previousImage) => {
         return (previousImage + 1) % carouselImages.length;
       });
-    }, 4000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [carouselImages.length]);
@@ -73,7 +87,7 @@ function Home() {
   const activities = [
     {
       number: 1,
-      icon: "🔐",
+      icon: LockKeyhole,
       title: "Login Authentication",
       description:
         "Validate a username and password against sample credentials and manage login/logout state.",
@@ -81,7 +95,7 @@ function Home() {
     },
     {
       number: 2,
-      icon: "🎓",
+      icon: GraduationCap,
       title: "Student Grade Evaluation",
       description:
         "Enter a student's score and get an automatic remark based on grade ranges.",
@@ -89,7 +103,7 @@ function Home() {
     },
     {
       number: 3,
-      icon: "🔑",
+      icon: KeyRound,
       title: "Password Strength Checker",
       description:
         "Check password length and receive live feedback on how strong it is.",
@@ -97,7 +111,7 @@ function Home() {
     },
     {
       number: 4,
-      icon: "⚡",
+      icon: Zap,
       title: "Electricity Bill Calculator",
       description:
         "Calculate a customer's electricity bill based on kWh consumption and tiered rates.",
@@ -105,7 +119,7 @@ function Home() {
     },
     {
       number: 5,
-      icon: "🕐",
+      icon: Clock3,
       title: "Employee Attendance Checker",
       description:
         "Check an employee's time-in and determine whether they are on time, late, or very late.",
@@ -126,16 +140,16 @@ function Home() {
             className="absolute inset-0 h-full w-full object-cover"
           />
 
-          {/* NU BLUE OVERLAY */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#001f5b]/85 via-[#003b7a]/70 to-[#0057a8]/55" />
 
           <div className="relative flex min-h-[520px] items-center px-8 py-20 md:px-16 lg:px-24 xl:px-32">
 
             <div className="max-w-4xl text-white">
 
-              {/* NU STYLE BADGE */}
+              {/* STUDENT PORTAL BADGE */}
               <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[#f5c400] px-5 py-2.5 text-sm font-bold text-[#001f5b] shadow-lg">
-                🎓 Student Portal
+                <GraduationCap size={18} strokeWidth={2.5} />
+                <span>Student Portal</span>
               </div>
 
               <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl xl:text-8xl">
@@ -154,9 +168,10 @@ function Home() {
 
               <a
                 href="#activities"
-                className="mt-9 inline-flex rounded-full bg-[#f5c400] px-8 py-4 text-sm font-extrabold text-[#001f5b] shadow-lg transition hover:-translate-y-1 hover:bg-[#ffd52e] hover:shadow-xl"
+                className="mt-9 inline-flex items-center gap-2 rounded-full bg-[#f5c400] px-8 py-4 text-sm font-extrabold text-[#001f5b] shadow-lg transition hover:-translate-y-1 hover:bg-[#ffd52e] hover:shadow-xl"
               >
-                Explore Activities →
+                <span>Explore Activities</span>
+                <ArrowRight size={18} />
               </a>
 
             </div>
@@ -170,9 +185,11 @@ function Home() {
 
             <div className="flex min-w-0 flex-1 items-center gap-3 rounded-full bg-[#f4f7fc] px-6 py-4">
 
-              <span className="text-lg text-[#003b7a]">
-                🔎
-              </span>
+              <Search
+                size={20}
+                strokeWidth={2.2}
+                className="shrink-0 text-[#003b7a]"
+              />
 
               <input
                 type="text"
@@ -183,15 +200,20 @@ function Home() {
             </div>
 
             <div className="hidden items-center gap-2 px-5 text-sm text-slate-500 lg:flex">
-              <span>📚</span>
+              <BookOpen
+                size={17}
+                strokeWidth={2}
+                className="text-[#003b7a]"
+              />
               <span>5 Activities</span>
             </div>
 
             <a
               href="#activities"
-              className="rounded-full bg-[#003b7a] px-8 py-4 text-center text-sm font-bold text-white transition hover:bg-[#002b5c]"
+              className="flex items-center justify-center gap-2 rounded-full bg-[#003b7a] px-8 py-4 text-center text-sm font-bold text-white transition hover:bg-[#002b5c]"
             >
-              View Activities
+              <span>View Activities</span>
+              <ArrowRight size={17} />
             </a>
 
           </div>
@@ -229,9 +251,9 @@ function Home() {
                 type="button"
                 onClick={previousImage}
                 aria-label="Previous image"
-                className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl font-bold text-[#003b7a] opacity-0 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white group-hover:opacity-100"
+                className="absolute left-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[#003b7a] opacity-0 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white group-hover:opacity-100"
               >
-                ←
+                <ArrowLeft size={20} strokeWidth={2.5} />
               </button>
 
               {/* NEXT BUTTON */}
@@ -239,9 +261,9 @@ function Home() {
                 type="button"
                 onClick={nextImage}
                 aria-label="Next image"
-                className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-xl font-bold text-[#003b7a] opacity-0 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white group-hover:opacity-100"
+                className="absolute right-4 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[#003b7a] opacity-0 shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white group-hover:opacity-100"
               >
-                →
+                <ArrowRight size={20} strokeWidth={2.5} />
               </button>
 
               {/* DOTS */}
@@ -269,8 +291,9 @@ function Home() {
             </div>
 
             {/* FLOATING LABEL */}
-            <div className="absolute -bottom-5 left-5 rounded-full border-4 border-white bg-[#003b7a] px-6 py-3 text-sm font-bold text-white shadow-lg">
-              🎓 Student Life
+            <div className="absolute -bottom-5 left-5 flex items-center gap-2 rounded-full border-4 border-white bg-[#003b7a] px-6 py-3 text-sm font-bold text-white shadow-lg">
+              <GraduationCap size={18} strokeWidth={2.3} />
+              <span>Student Life</span>
             </div>
 
           </div>
@@ -278,8 +301,9 @@ function Home() {
           {/* TEXT */}
           <div className="max-w-3xl">
 
-            <p className="text-sm font-extrabold uppercase tracking-widest text-[#003b7a]">
-              Student Dashboard
+            <p className="flex items-center gap-2 text-sm font-extrabold uppercase tracking-widest text-[#003b7a]">
+              <BookOpen size={17} strokeWidth={2.4} />
+              <span>Student Dashboard</span>
             </p>
 
             <h2 className="mt-3 text-4xl font-extrabold leading-tight text-[#001f5b] md:text-5xl xl:text-6xl">
@@ -299,16 +323,18 @@ function Home() {
 
               <a
                 href="#activities"
-                className="rounded-full bg-[#003b7a] px-7 py-3.5 text-sm font-bold text-white transition hover:bg-[#002b5c]"
+                className="flex items-center gap-2 rounded-full bg-[#003b7a] px-7 py-3.5 text-sm font-bold text-white transition hover:bg-[#002b5c]"
               >
-                View Activities
+                <span>View Activities</span>
+                <ArrowRight size={17} />
               </a>
 
               <Link
                 to="/activity1"
-                className="rounded-full border border-[#d9e2f0] bg-white px-7 py-3.5 text-sm font-bold text-[#003b7a] transition hover:border-[#003b7a] hover:bg-[#f4f7fc]"
+                className="flex items-center gap-2 rounded-full border border-[#d9e2f0] bg-white px-7 py-3.5 text-sm font-bold text-[#003b7a] transition hover:border-[#003b7a] hover:bg-[#f4f7fc]"
               >
-                Start Activity 1
+                <span>Start Activity 1</span>
+                <ArrowUpRight size={17} />
               </Link>
 
             </div>
@@ -324,8 +350,9 @@ function Home() {
 
           <div className="text-center">
 
-            <p className="text-sm font-extrabold uppercase tracking-widest text-[#003b7a]">
-              Quick Access
+            <p className="flex items-center justify-center gap-2 text-sm font-extrabold uppercase tracking-widest text-[#003b7a]">
+              <BookOpen size={17} strokeWidth={2.4} />
+              <span>Quick Access</span>
             </p>
 
             <h2 className="mt-2 text-4xl font-extrabold text-[#001f5b] md:text-5xl">
@@ -341,51 +368,60 @@ function Home() {
 
           <div className="mt-12 grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
 
-            {activities.map((activity) => (
-              <Link
-                key={activity.number}
-                to={activity.path}
-                className="group flex min-h-[290px] flex-col rounded-[24px] border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#003b7a]/30 hover:shadow-xl"
-              >
+            {activities.map((activity) => {
+              const ActivityIcon = activity.icon;
 
-                <div className="flex items-center justify-between">
+              return (
+                <Link
+                  key={activity.number}
+                  to={activity.path}
+                  className="group flex min-h-[290px] flex-col rounded-[24px] border border-slate-200 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-[#003b7a]/30 hover:shadow-xl"
+                >
 
-                  {/* NUMBER */}
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#e7eef8] text-sm font-extrabold text-[#003b7a]">
-                    {activity.number}
-                  </div>
+                  <div className="flex items-center justify-between">
 
-                  {/* ICON */}
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f8f3d8] text-2xl transition group-hover:scale-110">
-                    {activity.icon}
-                  </div>
+                    {/* NUMBER */}
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#e7eef8] text-sm font-extrabold text-[#003b7a]">
+                      {activity.number}
+                    </div>
 
-                </div>
-
-                <h3 className="mt-7 text-xl font-extrabold leading-tight text-[#001f5b]">
-                  {activity.title}
-                </h3>
-
-                <p className="mt-3 text-sm leading-6 text-slate-500">
-                  {activity.description}
-                </p>
-
-                <div className="mt-auto pt-7">
-
-                  <div className="flex items-center justify-between rounded-full bg-[#003b7a] px-5 py-3.5 text-sm font-bold text-white transition group-hover:bg-[#002b5c]">
-
-                    <span>Open Activity</span>
-
-                    <span className="transition-transform group-hover:translate-x-1">
-                      →
-                    </span>
+                    {/* ICON */}
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#f8f3d8] text-[#003b7a] transition group-hover:scale-110">
+                      <ActivityIcon
+                        size={27}
+                        strokeWidth={2.1}
+                      />
+                    </div>
 
                   </div>
 
-                </div>
+                  <h3 className="mt-7 text-xl font-extrabold leading-tight text-[#001f5b]">
+                    {activity.title}
+                  </h3>
 
-              </Link>
-            ))}
+                  <p className="mt-3 text-sm leading-6 text-slate-500">
+                    {activity.description}
+                  </p>
+
+                  <div className="mt-auto pt-7">
+
+                    <div className="flex items-center justify-between rounded-full bg-[#003b7a] px-5 py-3.5 text-sm font-bold text-white transition group-hover:bg-[#002b5c]">
+
+                      <span>Open Activity</span>
+
+                      <ArrowRight
+                        size={18}
+                        strokeWidth={2.4}
+                        className="transition-transform group-hover:translate-x-1"
+                      />
+
+                    </div>
+
+                  </div>
+
+                </Link>
+              );
+            })}
 
           </div>
 
@@ -430,12 +466,15 @@ function Home() {
             </div>
 
             <div className="rounded-2xl bg-[#f4f7fc] p-7 text-center transition hover:-translate-y-1 hover:shadow-md">
-              <p className="text-4xl font-extrabold text-[#003b7a]">
-                ⚛
+
+              <p className="flex justify-center text-4xl font-extrabold text-[#003b7a]">
+                <Atom size={40} strokeWidth={2.1} />
               </p>
+
               <p className="mt-2 text-sm text-slate-500">
                 React Powered
               </p>
+
             </div>
 
           </div>
