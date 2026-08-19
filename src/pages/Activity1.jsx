@@ -55,7 +55,9 @@ function Activity1() {
 
   return (
     <div className="flex h-150 w-full items-center justify-center overflow-hidden bg-[#f4f7fc] px-4">
-      <div className="w-full max-w-sm rounded-[24px] border border-slate-200 bg-white p-7 shadow-xl">
+      
+      
+      <div  className="w-full max-w-sm rounded-[24px] border border-slate-200 bg-white p-7 shadow-xl">
         {/* BADGE */}
         <div className="mx-auto mb-4 flex w-fit items-center gap-2 rounded-full bg-[#f5c400] px-4 py-1.5 text-xs font-bold text-[#001f5b] shadow-sm">
           <LockKeyhole size={14} strokeWidth={2.5} />
