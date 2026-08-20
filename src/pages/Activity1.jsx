@@ -15,7 +15,7 @@ const SAMPLE_CREDENTIALS = {
   username: "student",
   password: "student123",
 };
-
+//Jairus Ilacio
 function Activity1() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

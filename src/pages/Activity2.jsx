@@ -11,7 +11,7 @@ import {
   Meh,
   Frown,
 } from "lucide-react";
-
+//Shanna Audrey Salitorno
 function Activity2() {
   const [studentName, setStudentName] = useState("");
   const [score, setScore] = useState("");
