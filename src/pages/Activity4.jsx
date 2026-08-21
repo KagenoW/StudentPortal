@@ -45,8 +45,8 @@ function Activity4() {
       return;
     }
 
-    let total = 0;
-    let tier = "";
+    let total;
+    let tier;
 
     if (numUnits <= 100) {
       total = numUnits * 10;
@@ -62,13 +62,10 @@ function Activity4() {
       tier = "Tier 4 (Above 300 kWh)";
     }
 
-    let usageLevel = "";
-
-    if (total >= 5000) {
-      usageLevel = "High Electricity Usage";
-    } else {
-      usageLevel = "Normal Electricity Usage";
-    }
+    const usageLevel =
+    total >= 5000
+    ? "High Electricity Usage"
+    : "Normal Electricity Usage";
 
     setOutput({
       name: name,
