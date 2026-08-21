@@ -9,7 +9,7 @@ import {
   CheckCircle2,
   AlertCircle,
 } from "lucide-react";
-//Antonio Pilla III
+
 function Activity5() {
   const [name, setName] = useState("");
   const [time, setTime] = useState("");
