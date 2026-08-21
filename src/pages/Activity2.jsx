@@ -14,9 +14,7 @@ import {
   Meh,
   Frown,
 } from "lucide-react";
-
 // *Shanna Audrey Salitorno*
-
 function Activity2() {
   const [studentName, setStudentName] = useState("");
   const [score, setScore] = useState("");
@@ -158,15 +156,6 @@ function Activity2() {
   const RemarkIcon = style?.icon;
 
   return (
-    /*
-     * Fixed-height container just like Activity 1.
-     *
-     * h-150 keeps the Activity 2 section from expanding
-     * when the result card appears.
-     *
-     * overflow-hidden prevents the Activity itself from
-     * creating a scrollbar.
-     */
     <div className="flex h-150 w-full items-center justify-center overflow-hidden bg-gradient-to-b from-[#eef2fb] to-[#f4f7fc] px-4">
 
       {/* Main Card */}
@@ -232,7 +221,6 @@ function Activity2() {
               </p>
             )}
           </div>
-
           {/* Score */}
           <div>
             <div
@@ -418,5 +406,3 @@ function Activity2() {
 }
 
 export default Activity2;
-
-// *End of Activity2.jsx*

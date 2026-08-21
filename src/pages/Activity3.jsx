@@ -13,7 +13,7 @@ import {
   RotateCcw,
   Info,
 } from "lucide-react";
-
+//Jeyan Sandoval
 function Activity3() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);

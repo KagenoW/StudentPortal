@@ -7,7 +7,7 @@ import {
   RotateCcw,
   Receipt,
 } from "lucide-react";
-
+//Jerome Gopela
 function Activity4() {
   const [name, setName] = useState("");
   const [units, setUnits] = useState("");

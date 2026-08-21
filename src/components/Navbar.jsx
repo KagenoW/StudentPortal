@@ -10,7 +10,7 @@ import {
   Clock3,
   UserRound,
 } from "lucide-react";
-
+//Heartel Nile Gaylan and Timothy Heinrich Jamito
 function Navbar() {
   const location = useLocation();
 
