@@ -80,7 +80,7 @@ function Activity3() {
             <KeyRound size={14} strokeWidth={2.5} />
             <span>Activity 3</span>
           </div>
-          <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-[#0b1f3f]">
+          <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-[#001f5b]">
             Password Strength Checker
           </h1>
           <p className="mx-auto mt-2 max-w-xs text-sm leading-6 text-slate-500">
@@ -91,7 +91,7 @@ function Activity3() {
         {/* PASSWORD INPUT */}
         <div className="mt-7">
           <div className="flex items-center gap-3 rounded-full bg-[#f4f7fc] px-5 py-3.5">
-            <Lock size={17} strokeWidth={2.2} className="shrink-0 text-slate-400" />
+            <Lock size={17} strokeWidth={2.2} className="shrink-0 text-slate-400" color="#001f5b" />
             <input
               id="password-input"
               type={showPassword ? "text" : "password"}
@@ -123,7 +123,7 @@ function Activity3() {
           <button
             type="button"
             onClick={handleCheck}
-            className="flex flex-1 items-center justify-center rounded-full bg-[#0b1f3f] py-3.5 text-sm font-bold text-white transition hover:bg-[#13407a]"
+            className="flex flex-1 items-center justify-center rounded-full bg-[#003b7a] py-3.5 text-sm font-bold text-white transition hover:bg-[#002b5c]"
           >
             Check Password
           </button>
@@ -131,9 +131,10 @@ function Activity3() {
             type="button"
             onClick={handleClear}
             aria-label="Clear"
-            className="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full bg-[#f4f7fc] text-slate-500 transition hover:bg-[#e7eef8] hover:text-[#13407a]"
+            className="flex h-[50px] w-[50px] shrink-0 items-center justify-center rounded-full bg-[#f4f7fc] text-slate-500 transition hover:bg-[#d0ddf2] hover:text-[#13407a]"
+           // className="flex items-center justify-center gap-2 rounded-full bg-[#f4f7fc] px-5 py-3 text-sm font-bold text-[#003b7a] transition hover:bg-slate-200 active:scale-[0.98]"
           >
-            <RotateCcw size={18} />
+            <RotateCcw size={18} color="#003b7a"/>
           </button>
         </div>
 
